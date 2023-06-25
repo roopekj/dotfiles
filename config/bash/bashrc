@@ -1,0 +1,8 @@
+
+export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
+
+# Binaries with dependent library files etc here
+export PATH="$HOME/dotfiles/neovim/bin:$PATH"
+
+# Single file binaries
+export PATH="$HOME/dotfiles/bin:$PATH"
