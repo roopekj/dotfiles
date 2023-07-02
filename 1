@@ -1,15 +1,21 @@
 # Reload conf with Ctrl+b r
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
-# Theme 
-set -g @catppuccin_flavour 'macchiato' # latte | frappe | macchiato | mocha
-
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'christoomey/vim-tmux-navigator'
+# set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'catppuccino/tmux'
+# set -g @plugin 'dracula/tmux'
+
+# Theme
+# set -g @dracula-plugins "weather"
+# set -g @dracula-show-flags true
+# set -g @dracula-show-left-icon session
+# set -g @dracula-show-powerline true
+# set -g @dracula-show-fahrenheit false
+# set -g @dracula-military-time true
+# set -g status-position bottom
 
 # Quick hotkey for synchronizing panes
 bind-key e set-window-option synchronize-panes
@@ -17,6 +23,12 @@ bind-key e set-window-option synchronize-panes
 # Vim compatibility fixes
 set-option -g default-terminal "screen-256color"
 set -g focus-events on
+
+# Status bar styling
+# set-option -g status-bg '#666666'
+# set-option -g status-fg '#aaaaaa'
+# set-option -g status-left-length 50
+# set-option -g status-right " #(battery -t)  #(date '+%a, %b %d - %I:%M') "
 
 # Easier binds for splitting the window
 bind-key - split-window -v  -c '#{pane_current_path}'
