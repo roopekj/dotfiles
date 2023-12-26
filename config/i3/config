@@ -185,9 +185,11 @@ bindsym $mod+Shift+period exec systemctl suspend
 
 # Define which workspace common applications use
 assign [class="firefox"] $ws1
+assign [class="Chromium"] $ws1
 assign [class="kitty"] $ws2
 assign [class="Code"] $ws3
 assign [class="discord"] $ws4
+assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws5
 assign [class="krusader"] $ws6
 

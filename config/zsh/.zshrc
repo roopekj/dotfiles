@@ -1,7 +1,4 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
+# Path to oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 
 # Case-insensitive completion
@@ -17,8 +14,11 @@ HIST_STAMPS="dd/mm/yyyy"
 # Plugins
 plugins=(git)
 
+# Theme
+export ZSH_THEME="af-magic"
+
 # Source omz at this point
 source $ZSH/oh-my-zsh.sh
 
-# Source the profile
+# Finally, source the profile
 source $HOME/.zprofile

@@ -1,7 +1,6 @@
 # Configuration
 export TERM="xterm"
 export TERMINAL="xterm"
-export ZSH_THEME="af-magic"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
@@ -12,7 +11,7 @@ export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
 export PATH="$HOME/dotfiles/neovim/bin:$PATH"
 
 # Single file binaries
-export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/dotfiles/scripts:$PATH"
 
 # Time savers
 alias ..="cd .."
@@ -26,7 +25,7 @@ alias rm="rm -i"
 alias cp="cp -i"
 
 # Watch command for nvidia-smi, df, free...
-alias wa="watch -n 0,1 "
+alias wa="watch -n 0,1"
 
 # Tmux
 alias tnew='tmux new -s'
@@ -34,4 +33,3 @@ alias tattach='tmux attach -t'
 
 # Force of habit
 alias ll='ls -alF'
-

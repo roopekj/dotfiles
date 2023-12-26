@@ -4,8 +4,8 @@ export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
 # Binaries with dependent library files in their own subdirectories
 export PATH="$HOME/dotfiles/neovim/bin:$PATH"
 
-# Single file binaries
-export PATH="$HOME/dotfiles/bin:$PATH"
+# Scripts
+export PATH="$HOME/dotfiles/scripts:$PATH"
 
 # Defaults (xterm-kitty breaks clear with `database inaccessible` and screen-256color breaks special keys like END)
 export TERM="xterm"
@@ -23,5 +23,5 @@ alias rm="rm -i"
 alias cp="cp -i"
 
 # Watch commands such as nvidia-smi, df and free
-alias wa="watch -n 0,1 "
+alias wa="watch -n 0,1"
 
