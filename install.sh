@@ -16,6 +16,8 @@ unzip JetBrainsMono.zip && rm JetBrainsMono.zip
 sudo apt install breeze-icon-theme	# This is for krusader
 
 # Software
+sudo apt install neovim
+sudo snap install --classic code	# Cry about it
 sudo apt install kitty
 sudo apt install i3
 sudo apt install krusader

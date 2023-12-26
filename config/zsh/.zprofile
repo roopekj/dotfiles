@@ -14,6 +14,7 @@ export PATH="$HOME/dotfiles/neovim/bin:$PATH"
 export PATH="$HOME/dotfiles/scripts:$PATH"
 
 # Time savers
+alias v="nvim"
 alias ..="cd .."
 alias ...="cd ../.."
 alias gs="git status"
