@@ -41,6 +41,14 @@ ln -sf ~/dotfiles/config/kitty ~/.config/
 ln -sf ~/dotfiles/config/zsh/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/config/zsh/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/config/zsh/.zprofile ~/.zprofile
+ln -sf ~/dotfiles/config/conda/.condarc ~/.condarc
 
 # Make the local scripts executable so that they can actually be run
 chmod +x ~/dotfiles/scripts/tat
+
+# Conda
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda init zsh
