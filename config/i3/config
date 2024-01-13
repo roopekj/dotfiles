@@ -19,8 +19,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Focus window by placing cursor on it
-focus_follows_mouse yes
+# Don't focus window by placing cursor on it
+focus_follows_mouse no
 
 # Secret sauce
 gaps inner 5
@@ -177,7 +177,7 @@ assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws5
 assign [class="krusader"] $ws6
 
-# Define which screen each workspace will use
+# Define which screen each workspace will use (`xrandr` to get names of monitors)
 workspace $ws1 output DP-2
 workspace $ws2 output DP-2
 workspace $ws3 output DP-2
@@ -196,3 +196,6 @@ exec discord
 exec spotify
 exec krusader
 
+# Screen resolutions and placement
+exec_always xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-2
+exec_always xrandr --output DP-2 --mode 1920x1080 --primary

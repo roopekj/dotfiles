@@ -4,4 +4,8 @@ add_pip_as_python_dependency: True
 use_pip: False
 update_dependencies: False
 changeps1: False
+channel_priority: flexible
 
+channels:
+  - conda-forge
+  - defaults

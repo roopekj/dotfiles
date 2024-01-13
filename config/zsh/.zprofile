@@ -7,11 +7,8 @@ export VISUAL="nvim"
 # Clean up bash history
 export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
 
-# Binaries with dependent library files in their own subdirectories
-export PATH="$HOME/dotfiles/neovim/bin:$PATH"
-
-# Single file binaries
-export PATH="$HOME/dotfiles/scripts:$PATH"
+# Add scripts and applications to path
+export PATH="$HOME/dotfiles/scripts:$HOME/dotfiles/applications:$PATH"
 
 # Time savers
 alias v="nvim"
