@@ -1,7 +1,11 @@
+# Fail of first error
+set -e
+
 # Add repo's bash config to system .bashrc if not already present
 grep -qxF 'source $HOME/dotfiles/config/bash/.bashrc' $HOME/.bashrc || echo 'source $HOME/dotfiles/config/bash/.bashrc' >> $HOME/.bashrc
 
 # Install Tmux Package Manager
+rm -rf ./tpm $HOME/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Use tmux.conf from this repo

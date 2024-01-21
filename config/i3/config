@@ -5,8 +5,7 @@ font pango:monospace 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# nm-applet is a DE-independent system tray GUI for NetworkManager.
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
@@ -37,7 +36,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 
 # start dmenu on the $mod key alone when releasing
-bindcode 133 --release exec dmenu_run
+bindsym $mod+a exec dmenu_run
 
 # change focus
 bindsym $mod+h focus left
@@ -78,10 +77,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 # bindsym $mod+a focus parent
@@ -171,7 +170,7 @@ bindsym $mod+Shift+period exec systemctl suspend
 assign [class="firefox"] $ws1
 assign [class="Chromium"] $ws1
 assign [class="kitty"] $ws2
-assign [class="Code"] $ws3
+assign [class="code"] $ws3
 assign [class="discord"] $ws4
 assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws5
@@ -199,3 +198,7 @@ exec krusader
 # Screen resolutions and placement
 exec_always xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-2
 exec_always xrandr --output DP-2 --mode 1920x1080 --primary
+
+# Screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl --min-val=10% set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
