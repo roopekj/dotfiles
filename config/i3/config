@@ -3,7 +3,7 @@ font pango:monospace 8
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -t -i $HOME/dotfiles/img/bg.png
 
 # nm-applet is a DE-independent system tray GUI for NetworkManager.
 exec --no-startup-id nm-applet
@@ -164,7 +164,8 @@ bar {
 }
 
 # Suspend
-bindsym $mod+Shift+period exec systemctl suspend
+bindsym $mod+Shift+period exec loginctl lock-session
+bindsym $mod+Shift+comma exec systemctl suspend
 
 # Define which workspace common applications will use
 assign [class="firefox"] $ws1
@@ -185,7 +186,7 @@ workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
 
 # Set background
-exec_always feh --bg-fill ~/dotfiles/img/bg.jpg
+exec_always feh --bg-fill ~/dotfiles/img/bg.png
 
 # Start default applications
 exec firefox
