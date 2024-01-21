@@ -48,6 +48,7 @@ rm -rf $HOME/.config/i3 $HOME/.config/i3status
 ln -sf $HOME/dotfiles/config/i3 $HOME/.config/
 ln -sf $HOME/dotfiles/config/i3status $HOME/.config/
 ln -sf $HOME/dotfiles/config/kitty $HOME/.config/
+ln -sf $HOME/dotfiles/config/nvim $HOME/.config
 ln -sf $HOME/dotfiles/config/zsh/.zshenv $HOME/.zshenv
 ln -sf $HOME/dotfiles/config/zsh/.zshrc $HOME/.zshrc
 ln -sf $HOME/dotfiles/config/zsh/.zprofile $HOME/.zprofile
