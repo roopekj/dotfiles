@@ -5,14 +5,14 @@ set -e
 sudo pacman -Syu
 
 # Add repo's bash config to system .bashrc if not already present
-grep -qxF 'source $HOME/dotfiles/config/bash/.bashrc' $HOME/.bashrc || echo 'source $HOME/dotfiles/config/bash/.bashrc' >> $HOME/.bashrc
+grep -qxF 'source $HOME/dotfiles/config/bash/.bashrc' $HOME/.bashrc || echo 'source $HOME/dotfiles/config/bash/.bashrc' >>$HOME/.bashrc
 
 # Install Tmux Package Manager
 rm -rf ./tpm $HOME/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Use tmux.conf from this repo
-echo "source-file $HOME/dotfiles/config/tmux/tmux.conf" > $HOME/.tmux.conf
+echo "source-file $HOME/dotfiles/config/tmux/tmux.conf" >$HOME/.tmux.conf
 
 # Fonts
 mkdir -p $HOME/.local/share/fonts
@@ -22,20 +22,10 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsM
 sudo pacman -S unzip --noconfirm
 unzip -o JetBrainsMono.zip -d $HOME/.local/share/fonts
 rm JetBrainsMono.zip
-sudo pacman -S breeze-icons	--noconfirm        # This is for krusader
+sudo pacman -S breeze-icons --noconfirm # This is for krusader
 
-# i3wm
-sudo pacman -S i3-wm --noconfirm
-
-# Neovim
-sudo pacman -S neovim --noconfirm
-
-# Install packages
-sudo pacman -S tmux --noconfirm
-sudo pacman -S code --noconfirm
-sudo pacman -S kitty --noconfirm
-sudo pacman -S krusader --noconfirm
-sudo pacman -S feh --noconfirm                # Setting the background
+# Packages required for next steps
+sudo pacman -S i3-wm neovim tmux code kitty krusader feh --noconfirm
 
 # ZSH
 sudo pacman -S zsh --noconfirm
@@ -44,7 +34,7 @@ yes no | sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 chsh -s $(which zsh)
 
 # Symlink configs (NOTE: these overwrite previous files under $HOME and $HOME/.config)
-rm -rf $HOME/.config/i3 $HOME/.config/i3status 
+rm -rf $HOME/.config/i3 $HOME/.config/i3status
 ln -sf $HOME/dotfiles/config/i3 $HOME/.config/
 ln -sf $HOME/dotfiles/config/i3status $HOME/.config/
 ln -sf $HOME/dotfiles/config/kitty $HOME/.config/

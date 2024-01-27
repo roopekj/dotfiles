@@ -86,7 +86,7 @@ bindsym $mod+shift+space floating toggle
 # bindsym $mod+a focus parent
 
 # Focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
 # Name workspaces and define variables to be used later
 set $ws1 "1: Browser"
