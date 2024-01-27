@@ -62,6 +62,7 @@ mkdir -p $HOME/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3/miniconda.sh
 bash $HOME/miniconda3/miniconda.sh -b -u -p $HOME/miniconda3
 rm -rf $HOME/miniconda3/miniconda.sh
+which zsh | sudo tee -a /etc/shells
 $HOME/miniconda3/bin/conda init zsh
 
 # Sound
@@ -76,4 +77,4 @@ sudo usermod -aG video $USER
 sudo pacman -S xss-lock --noconfirm
 
 # Misc
-sudo pacman -S tig --noconfirm
+sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle --noconfirm

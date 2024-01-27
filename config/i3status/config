@@ -1,11 +1,12 @@
 general {
+        output_format = "i3bar"
         colors = true
         interval = 1
+        separator = "|"
 }
 
-order += "disk /"
+order += "disk /home"
 order += "battery all"
-order += "load"
 order += "tztime local"
 
 battery all {
@@ -13,13 +14,9 @@ battery all {
 }
 
 tztime local {
-        format = "%d-%m-%Y %H:%M:%S"
+        format = "%d.%m.%Y %H:%M:%S"
 }
 
-load {
-        format = "%1min"
-}
-
-disk "/" {
+disk "/home" {
         format = "%avail"
 }
