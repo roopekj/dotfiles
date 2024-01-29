@@ -1,2 +1,5 @@
 # Don't include applications
 applications
+
+# Files that rarely change
+config/zsh/.zshrc
