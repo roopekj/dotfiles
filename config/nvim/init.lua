@@ -143,8 +143,8 @@ require('lazy').setup({
         end, { desc = 'git diff against last commit' })
 
         -- Toggles
-        map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'toggle git blame line' })
-        map('n', '<leader>td', gs.toggle_deleted, { desc = 'toggle git show deleted' })
+        -- map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'toggle git blame line' })
+        -- map('n', '<leader>td', gs.toggle_deleted, { desc = 'toggle git show deleted' })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
@@ -218,7 +218,7 @@ require('lazy').setup({
 
 -- [[ Linters and formatters ]]
 require("mason-tool-installer").setup {
-	  ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "autopep8" },
+	  ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "autopep8", "rust-analyzer" },
 	  auto_update = false,
 	  run_on_start = true,
 }
@@ -344,6 +344,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Keybinds for tabs
+vim.keymap.set('n', '<leader>tn',':tabnew<cr>', {desc = 'Open new tab'})
+vim.keymap.set('n', '<leader>tc',':tabclose<cr>', {desc = 'Close current tab'})
+vim.keymap.set('n', '<C-l>',':tabnext<cr>', {desc = 'Go one tab forward'})
+vim.keymap.set('n', '<C-h>',':tabprev<cr>', {desc = 'Go one tab backward'})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })

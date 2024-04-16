@@ -5,6 +5,9 @@ font pango:monospace 7
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -t -i $HOME/dotfiles/img/bg.png
 
+# Turn off screensaver
+xset s off
+
 # nm-applet is a DE-independent system tray GUI for NetworkManager.
 exec --no-startup-id nm-applet
 
