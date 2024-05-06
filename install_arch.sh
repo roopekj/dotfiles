@@ -25,7 +25,7 @@ rm JetBrainsMono.zip
 sudo pacman -S breeze-icons --noconfirm # This is for krusader
 
 # Packages required for next steps
-sudo pacman -S i3-wm neovim tmux code kitty krusader feh --noconfirm
+sudo pacman -S i3-wm neovim tmux code kitty krusader feh polkit --noconfirm
 
 # ZSH
 sudo pacman -S zsh --noconfirm
@@ -66,5 +66,9 @@ sudo usermod -aG video $USER
 # Facilitate screen locking
 sudo pacman -S xss-lock --noconfirm
 
+# Facilitate suspend
+sudo usermod -aG users "$USER"
+sudo cp $HOME/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
+
 # Misc
-sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle --noconfirm
+sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm --noconfirm

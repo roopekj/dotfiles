@@ -206,8 +206,7 @@ exec krusader
 for_window [class=.*] focus
 
 # Screen resolutions and placement
-exec_always xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-2
-exec_always xrandr --output DP-2 --mode 1920x1080 --primary
+exec --no-startup-id "sh $HOME/dotfiles/scripts/switch_monitors.sh"
 
 # Screen brightness
 bindsym XF86MonBrightnessDown exec brightnessctl --min-val=10% set 10%-
@@ -216,3 +215,19 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 # Move workspaces between windows
 bindsym $mod+shift+a move workspace to output left
 bindsym $mod+shift+s move workspace to output right
+
+# Reloading connected monitors
+bindsym $mod+p exec --no-startup-id "sh $HOME/dotfiles/scripts/switch_monitors.sh"
+
+# PrtSc = fullscreen screenshot, super+PrtSc = active window screenshot, shift+PrtSc = selection screenshot
+# Screenshots (filesystem)
+bindsym Print exec --no-startup-id maim "$HOME/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id main --select "$HOME/Pictures/$(date)"
+
+# Adding Ctrl saves screenshots to clipboard
+# Screenshots (clipboard)
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id main --select | xclip -selection clipboard -t image/png
+
