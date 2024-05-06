@@ -10,8 +10,9 @@ vim.api.nvim_create_autocmd(
         pattern = "*.py",
         group = "AutoFormat",
         callback = function()
-            vim.cmd("silent !autopep8 --in-place %")
             vim.cmd("silent !black --quiet %")
+            vim.cmd("silent !autoflake --in-place --remove-unused-variables --remove-all-unused-imports %")
+            vim.cmd("silent !isort %")
             vim.cmd("edit")
         end,
     }
@@ -218,7 +219,7 @@ require('lazy').setup({
 
 -- [[ Linters and formatters ]]
 require("mason-tool-installer").setup {
-	  ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "autopep8", "rust-analyzer" },
+	  ensure_installed = { "stylua", "shfmt", "shellcheck", "black", "isort", "autoflake", "rust-analyzer" },
 	  auto_update = false,
 	  run_on_start = true,
 }

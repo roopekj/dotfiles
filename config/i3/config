@@ -6,7 +6,7 @@ font pango:monospace 7
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -t -i $HOME/dotfiles/img/bg.png
 
 # Turn off screensaver
-xset s off
+exec --no-startup-id xset s off
 
 # nm-applet is a DE-independent system tray GUI for NetworkManager.
 exec --no-startup-id nm-applet
