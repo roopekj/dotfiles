@@ -14,8 +14,10 @@ export PATH="$HOME/dotfiles/scripts:$HOME/dotfiles/applications:$PATH"
 alias v="nvim"
 alias ..="cd .."
 alias ...="cd ../.."
+alias dud="du . --max-depth=1"
+
+# The rest of git aliases come from OMZ
 alias gs="git status"
-alias gd="git diff"
 
 # Danger zone
 alias mv="mv -i"
@@ -26,8 +28,9 @@ alias cp="cp -i"
 alias wa="watch -n 0,1"
 
 # Tmux
-alias tnew='tmux new -s'
-alias tattach='tmux attach -t'
+alias tnew="tmux new -s"
+alias tattach="tmux attach -t"
+alias tls="tmux ls"
 
 # Force of habit
-alias ll='ls -alF'
+alias ll="ls -alF"

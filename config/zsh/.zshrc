@@ -17,8 +17,11 @@ plugins=(git virtualenv)
 # Theme
 export ZSH_THEME="af-magic"
 
-# Source omz at this point
+# Source OMZ at this point
 source $ZSH/oh-my-zsh.sh
+
+# Disable this setting enabled by OMZ, which shares history between panes
+unsetopt share_history
 
 # Finally, source the profile
 source $HOME/.zprofile
