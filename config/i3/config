@@ -202,7 +202,7 @@ exec discord
 exec spotify
 exec krusader
 
-# Focus every time a new window is created through dmeny even if it does not request it
+# Focus every time a new window is created through dmenu even if it does not request it
 for_window [class=.*] focus
 
 # Screen resolutions and placement
@@ -219,15 +219,15 @@ bindsym $mod+shift+s move workspace to output right
 # Reloading connected monitors
 bindsym $mod+p exec --no-startup-id "sh $HOME/dotfiles/scripts/switch_monitors.sh"
 
-# PrtSc = fullscreen screenshot, super+PrtSc = active window screenshot, shift+PrtSc = selection screenshot
+# PrtSc = fullscreen screenshot, Ctrl+PrtSc = active window screenshot, Shift+PrtSc = selection screenshot
 # Screenshots (filesystem)
-bindsym Print exec --no-startup-id maim "$HOME/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/$(date)"
-bindsym Shift+Print exec --no-startup-id main --select "$HOME/Pictures/$(date)"
+bindsym Print exec --no-startup-id maim "$HOME/Pictures/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym Ctrl+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym Shift+Print exec --no-startup-id maim --select "$HOME/Pictures/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
 
-# Adding Ctrl saves screenshots to clipboard
+# Adding super saves screenshots to clipboard
 # Screenshots (clipboard)
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id main --select | xclip -selection clipboard -t image/png
+bindsym $mod+Print exec --no-startup-id maim |xclip -selection clipboard -t image/png
+bindsym $mod+Ctrl+Print exec --no-startup-id maim --window $(xdotool getactivewindow) |xclip -selection clipboard -t image/png
+bindsym $mod+Shift+Print exec --no-startup-id maim --select |xclip -selection clipboard -t image/png
 

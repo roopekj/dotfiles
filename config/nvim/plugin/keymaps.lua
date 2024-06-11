@@ -30,7 +30,7 @@ vim.keymap.set("v", "<Right>", "")
 -- <leader>p doesn't overwrite copy buffer when pasting over existing text
 vim.keymap.set("x", "<leader>p", [["_dP"]])
 
--- Keymaps for better default experience
+-- Hide this, it will pull up which-key.nvim
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
@@ -49,8 +49,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- Clear highlights when pressing Esc
-vim.keymap.set("n", "<Esc>", ":noh<Cr><Esc>")
+-- Clear search highlights when pressing Esc
+vim.keymap.set("n", "<Esc>", ":noh<Cr><Esc>", { silent = true })
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

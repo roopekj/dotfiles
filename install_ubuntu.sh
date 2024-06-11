@@ -36,11 +36,12 @@ sudo ln -s $HOME/dotfiles/applications/nvim.appimage /usr/bin/nvim
 
 # Install packages
 sudo apt update
-sudo snap install --classic code	# Cry about it
+sudo snap install --classic code	    # Cry about it
 sudo apt install kitty
 sudo apt install krusader
 sudo apt install feh                	# Setting the background
-sudo apt install ripgrep	    	# Searching with grep inside nvim
+sudo apt install ripgrep	    	    # Searching with grep inside nvim
+sudo apt install maim xdotool           # Screenshots
 
 # ZSH
 sudo apt install zsh
