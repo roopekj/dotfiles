@@ -190,6 +190,14 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    "folke/trouble.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {}
+    end
+  },
+
   -- Mason-tool-installer to predefine linters and formatters
   {'WhoIsSethDaniel/mason-tool-installer'}
 }, {})
