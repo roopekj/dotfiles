@@ -34,6 +34,7 @@ yes no | sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 chsh -s $(which zsh)
 
 # Symlink configs (NOTE: these overwrite previous files under $HOME and $HOME/.config)
+# TODO: Use stow instead?
 rm -rf $HOME/.config/i3 $HOME/.config/i3status
 ln -sf $HOME/dotfiles/config/i3 $HOME/.config/
 ln -sf $HOME/dotfiles/config/i3status $HOME/.config/
@@ -71,4 +72,4 @@ sudo usermod -aG users "$USER"
 sudo cp $HOME/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
 
 # Misc
-sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm --noconfirm
+sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza --noconfirm

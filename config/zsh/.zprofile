@@ -33,4 +33,9 @@ alias tattach="tmux attach -t"
 alias tls="tmux ls"
 
 # Force of habit
-alias ll="ls -alF"
+# alias ll="ls -alF"
+
+# Tree list of directory
+alias ll="eza --tree --level=1 --long --icons --git --all"
+alias lt="eza --tree --level=2 --long --icons --git"
+alias lta="eza --tree --level=2 --long --icons --git --all"

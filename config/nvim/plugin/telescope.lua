@@ -10,8 +10,11 @@ require('telescope').setup {
   },
   pickers = {
     find_files = {
-      -- This finds hidden files (like configs) but also messes with results and introduces bloat
-      hidden = false
+      -- This finds hidden files (like configs) but also introduces nonsense into the results
+      -- File patterns are used to remove unnecessary results
+      hidden = true,
+      file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+		"%.pdf", "%.mkv", "%.mp4", "%.zip", "%.png", "%.jpg", "%.pyc", "%.gz", "%.webp", "%.gif"},
     }
   }
 }
