@@ -1,3 +1,7 @@
+-- Patterns for removing noisy results when searching with either find_files, live_grep or grep_string
+local file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+		"%.pdf", "%.mkv", "%.mp4", "%.zip", "%.png", "%.jpg", "%.pyc", "%.gz", "%.webp", "%.gif"}
+
 -- [[ Configure Telescope ]]
 require('telescope').setup {
   defaults = {
@@ -10,12 +14,18 @@ require('telescope').setup {
   },
   pickers = {
     find_files = {
-      -- This finds hidden files (like configs) but also introduces nonsense into the results
-      -- File patterns are used to remove unnecessary results
       hidden = true,
-      file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
-		"%.pdf", "%.mkv", "%.mp4", "%.zip", "%.png", "%.jpg", "%.pyc", "%.gz", "%.webp", "%.gif"},
+      file_ignore_patterns = file_ignore_patterns,
+    },
+    live_grep = {
+      additional_args = {"--hidden"},
+      file_ignore_patterns = file_ignore_patterns,
+    },
+    grep_string = {
+      additional_args = {"--hidden"},
+      file_ignore_patterns = file_ignore_patterns,
     }
+
   }
 }
 
@@ -57,4 +67,3 @@ local function live_grep_git_root()
 end
 
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
-

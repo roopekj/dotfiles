@@ -36,6 +36,6 @@ alias tls="tmux ls"
 # alias ll="ls -alF"
 
 # Tree list of directory
-alias ll="eza --tree --level=1 --long --icons --git --all"
+alias ll="eza --long --icons --git --all --sort modified"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="eza --tree --level=2 --long --icons --git --all"

@@ -1,11 +1,13 @@
-auto_update_conda: True
-always_yes: False
-add_pip_as_python_dependency: True
-use_pip: False
-update_dependencies: False
-changeps1: False
+auto_update_conda: true
+always_yes: false
+add_pip_as_python_dependency: true
+use_pip: false
+update_dependencies: false
+changeps1: false
 channel_priority: flexible
+auto_activate_base: false
 
 channels:
   - conda-forge
   - defaults
+

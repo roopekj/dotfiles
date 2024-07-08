@@ -1,7 +1,7 @@
 # dotfiles
 
 **OS**: arch/ubuntu  
-**Editor**: vim/nvim/lvim/vscode/whatever  
+**Editor**: nvim  
 **Shell**: zsh + oh-my-zsh  
 **Terminal**: kitty  
 **Multiplexer**: tmux  
