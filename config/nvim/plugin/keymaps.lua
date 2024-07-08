@@ -38,10 +38,10 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Keybinds for tabs
-vim.keymap.set('n', '<leader>tn',':tabnew<cr>', {desc = 'Open new tab'})
-vim.keymap.set('n', '<leader>tc',':tabclose<cr>', {desc = 'Close current tab'})
-vim.keymap.set('n', '<C-l>',':tabnext<cr>', {desc = 'Go one tab forward'})
-vim.keymap.set('n', '<C-h>',':tabprev<cr>', {desc = 'Go one tab backward'})
+vim.keymap.set('n', '<leader>tn',':tabnew<cr>', {desc = 'Open new tab', silent = true})
+vim.keymap.set('n', '<leader>tc',':tabclose<cr>', {desc = 'Close current tab', silent = true})
+vim.keymap.set('n', '<C-l>',':tabnext<cr>', {desc = 'Go one tab forward', silent = true})
+vim.keymap.set('n', '<C-h>',':tabprev<cr>', {desc = 'Go one tab backward', silent = true})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
