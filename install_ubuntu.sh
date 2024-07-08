@@ -42,6 +42,7 @@ sudo apt install krusader
 sudo apt install feh                	# Setting the background
 sudo apt install ripgrep	    	    # Searching with grep inside nvim
 sudo apt install maim xdotool           # Screenshots
+sudo apt install ncdu                   # Disk space diagnostics
 
 # ZSH
 sudo apt install zsh

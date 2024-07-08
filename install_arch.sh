@@ -72,4 +72,4 @@ sudo usermod -aG users "$USER"
 sudo cp $HOME/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
 
 # Misc
-sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza --noconfirm
+sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza ncdu --noconfirm
