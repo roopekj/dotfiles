@@ -1,3 +1,8 @@
+if [ $(whoami) == "root" ]; then
+	echo "Run this script as your user account, not with sudo or as root"
+	exit
+fi
+
 # Fail of first error
 set -e
 
@@ -30,7 +35,8 @@ yes | rm keyring.deb
 wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage
 wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage.sha256sum
 sha256sum -c "nvim.appimage.sha256sum"
-mv nvim.appimage applications/
+mkdir -p $HOME/dotfiles/applications
+mv nvim.appimage $HOME/dotfiles/applications
 yes | rm nvim.appimage.sha256sum
 sudo ln -s $HOME/dotfiles/applications/nvim.appimage /usr/bin/nvim
 
@@ -50,6 +56,7 @@ yes no | sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 chsh -s $(which zsh)
 
 # Symlink configs (NOTE: these overwrite previous files under $HOME and $HOME/.config)
+mkdir -p $HOME/.config
 ln -sf $HOME/dotfiles/config/i3 $HOME/.config/
 ln -sf $HOME/dotfiles/config/i3status $HOME/.config/
 ln -sf $HOME/dotfiles/config/kitty $HOME/.config/

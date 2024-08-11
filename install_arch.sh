@@ -1,3 +1,8 @@
+if [ $(whoami) == "root" ]; then
+	echo "Run this script as your user account, not with sudo or as root"
+	exit
+fi
+
 # Fail on first error
 set -e
 
@@ -31,10 +36,11 @@ sudo pacman -S i3-wm neovim tmux code kitty krusader feh polkit --noconfirm
 sudo pacman -S zsh --noconfirm
 rm -rf $HOME/.oh-my-zsh
 yes no | sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-chsh -s $(which zsh)
+chsh -s /bin/zsh
 
 # Symlink configs (NOTE: these overwrite previous files under $HOME and $HOME/.config)
 # TODO: Use stow instead?
+mkdir -p $HOME/.config
 rm -rf $HOME/.config/i3 $HOME/.config/i3status
 ln -sf $HOME/dotfiles/config/i3 $HOME/.config/
 ln -sf $HOME/dotfiles/config/i3status $HOME/.config/
@@ -53,7 +59,6 @@ mkdir -p $HOME/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3/miniconda.sh
 bash $HOME/miniconda3/miniconda.sh -b -u -p $HOME/miniconda3
 rm -rf $HOME/miniconda3/miniconda.sh
-which zsh | sudo tee -a /etc/shells
 $HOME/miniconda3/bin/conda init zsh
 
 # Sound
@@ -72,4 +77,4 @@ sudo usermod -aG users "$USER"
 sudo cp $HOME/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
 
 # Misc
-sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza ncdu --noconfirm
+sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza ncdu yazi --noconfirm
