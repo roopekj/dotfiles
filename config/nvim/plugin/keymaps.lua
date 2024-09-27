@@ -28,7 +28,9 @@ vim.keymap.set("v", "<Up>", "")
 vim.keymap.set("v", "<Right>", "")
 
 -- <leader>p doesn't overwrite copy buffer when pasting over existing text
-vim.keymap.set("x", "<leader>p", [["_dP"]])
+vim.keymap.set("x", "<leader>p", [["_dp"]], { silent = true })
+vim.keymap.set("x", "<leader>d", [["_dd"]], { silent = true })
+vim.keymap.set("x", "<leader>c", [["_dc"]], { silent = true })
 
 -- Hide this, it will pull up which-key.nvim
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })

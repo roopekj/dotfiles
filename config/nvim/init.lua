@@ -190,6 +190,7 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- Overview of LSP errors and warnings
   {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",

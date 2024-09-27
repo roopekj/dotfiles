@@ -1,5 +1,5 @@
 set $mod Mod4
-font pango:monospace 7
+font pango:monospace 9
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -120,7 +120,8 @@ bar {
         status_command i3status
         
         colors {
-                statusline #2e9ef4
+                # statusline #2e9ef4            # Blue
+                statusline #ffffff              # White
                 separator #cccccc
         }
 }
@@ -129,23 +130,18 @@ bar {
 bindsym $mod+Shift+period exec loginctl lock-session
 bindsym $mod+Shift+comma exec systemctl suspend
 
-# Define which workspace common applications will use
+# Define which workspace common applications will use (`xprop` to get process information with cursor)
 assign [class="firefox"] $ws1
 assign [class="Chromium"] $ws1
 assign [class="kitty"] $ws2
-assign [class="code"] $ws3
+assign [class="Code"] $ws3
 assign [class="discord"] $ws4
 assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws5
 assign [class="krusader"] $ws6
 
-# Define which screen each workspace will use (`xrandr` to get names of monitors)
-workspace $ws1 output DP-2
-workspace $ws2 output DP-2
-workspace $ws3 output DP-2
-workspace $ws4 output HDMI-0
-workspace $ws5 output HDMI-0
-workspace $ws6 output HDMI-0
+# Define these settings in a different file to make git diffs manageable between systems
+include monitors.conf
 
 # Set background
 exec_always feh --bg-fill ~/dotfiles/img/bg.png
@@ -153,7 +149,6 @@ exec_always feh --bg-fill ~/dotfiles/img/bg.png
 # Start default applications
 exec firefox
 exec kitty
-exec code
 exec discord
 exec spotify
 exec krusader
@@ -165,8 +160,8 @@ for_window [class=.*] focus
 exec --no-startup-id "sh $HOME/dotfiles/scripts/switch_monitors.sh"
 
 # Screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl --min-val=10% set 10%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl --min-val=5% set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 # Move workspaces between windows
 bindsym $mod+shift+a move workspace to output left

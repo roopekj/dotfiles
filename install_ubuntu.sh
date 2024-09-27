@@ -6,6 +6,10 @@ fi
 # Fail of first error
 set -e
 
+# Preliminaries
+sudo apt update
+sudo apt install curl
+
 # Add repo's bash config to system .bashrc if not already present
 grep -qxF 'source $HOME/dotfiles/config/bash/.bashrc' $HOME/.bashrc || echo 'source $HOME/dotfiles/config/bash/.bashrc' >> $HOME/.bashrc
 
@@ -49,6 +53,8 @@ sudo apt install feh                	# Setting the background
 sudo apt install ripgrep	    	    # Searching with grep inside nvim
 sudo apt install maim xdotool           # Screenshots
 sudo apt install ncdu                   # Disk space diagnostics
+sudo apt install fuse3					# Using appimages
+sudo apt install unzip					# Mason uses this when installing stylua
 
 # ZSH
 sudo apt install zsh
@@ -59,6 +65,7 @@ chsh -s $(which zsh)
 mkdir -p $HOME/.config
 ln -sf $HOME/dotfiles/config/i3 $HOME/.config/
 ln -sf $HOME/dotfiles/config/i3status $HOME/.config/
+ln -sf $HOME/dotfiles/config/nvim $HOME/.config/
 ln -sf $HOME/dotfiles/config/kitty $HOME/.config/
 ln -sf $HOME/dotfiles/config/zsh/.zshenv $HOME/.zshenv
 ln -sf $HOME/dotfiles/config/zsh/.zshrc $HOME/.zshrc
