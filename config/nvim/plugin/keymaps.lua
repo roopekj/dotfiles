@@ -31,6 +31,7 @@ vim.keymap.set("v", "<Right>", "")
 vim.keymap.set("x", "<leader>p", [["_dp"]], { silent = true })
 vim.keymap.set("x", "<leader>d", [["_dd"]], { silent = true })
 vim.keymap.set("x", "<leader>c", [["_dc"]], { silent = true })
+vim.keymap.set("x", "<leader>x", [["_dx"]], { silent = true })
 
 -- Hide this, it will pull up which-key.nvim
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
