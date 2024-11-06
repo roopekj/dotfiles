@@ -76,5 +76,8 @@ sudo pacman -S xss-lock --noconfirm
 sudo usermod -aG users "$USER"
 sudo cp $HOME/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
 
+# Add Xorg configuration (mouse acceleration)
+sudo cp $HOME/dotfiles/config/xorg/* /etc/X11/xorg.conf.d/
+
 # Misc
-sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza ncdu yazi --noconfirm
+sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza ncdu yazi chromium gimp vlc telegram-desktop discord --noconfirm

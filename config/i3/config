@@ -9,7 +9,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-
 exec --no-startup-id xset s off
 
 # nm-applet is a DE-independent system tray GUI for NetworkManager.
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet --sm-disable
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
