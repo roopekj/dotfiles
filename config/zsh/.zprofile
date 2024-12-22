@@ -16,6 +16,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias dud="du -h . --max-depth=1 | sort -h"
+alias journal="journalctl -xeu"
 
 # The rest of git aliases come from OMZ
 alias gs="git status"
@@ -34,10 +35,15 @@ alias tattach="tmux attach -t"
 alias tls="tmux ls"
 alias ta="tmux a"
 
-# Force of habit
-# alias ll="ls -alF"
-
 # Tree list of directory
 alias ll="eza --long --icons --git --all --sort modified"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="eza --tree --level=2 --long --icons --git --all"
+
+# Docker helpers
+# Run bash in image
+alias dish="docker run --rm -it --entrypoint bash "
+# Run bash in container (aliases don't support parameters, hack around this with a function)
+dcsh () {
+    docker exec -it "$1" bash
+}

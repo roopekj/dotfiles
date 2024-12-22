@@ -1,4 +1,4 @@
-# NOTE: Template for a correctly formatted environment file, rename to `current.sh` to enable.
+# NOTE: This is a template file, rename to `environment.sh` to enable.
 
 # Monitor in order of their placement from left to right separated by spaces; `xrandr` to get identifiers, eg. HDMI-1.
 MONITORS="MONITOR_1 MONITOR_2"
@@ -8,3 +8,6 @@ RESOLUTIONS="RESOLUTION_1 RESOLUTION_2"
 
 # Identifier of the primary monitor.
 PRIMARY_MONITOR="MONITOR_2"
+
+# Presentation monitor
+PRESENTATION_MONITOR="MONITOR_2"

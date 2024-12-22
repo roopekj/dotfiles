@@ -9,5 +9,3 @@
 **File manager**: krusader  
 **Launcher**: dmenu  
 **Networking**: networkmanager
-
-Wouldn't recommend running this as is, it makes strong assumptions about number of monitors and so on.

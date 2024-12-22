@@ -1,0 +1,9 @@
+# NOTE: This is a template file, rename to `workspaces.conf` to enable.
+
+# Define which screen each workspace will use; `xrandr` to get identifiers
+workspace $ws1 output MONITOR_1
+workspace $ws2 output MONITOR_1
+workspace $ws3 output MONITOR_1
+workspace $ws4 output MONITOR_1
+workspace $ws5 output MONITOR_1
+

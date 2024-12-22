@@ -1,5 +1,7 @@
 # Don't include environment specific configurations, only the template
 *
 !.gitignore
-!environment.template
+!config
+!workspaces.template
+
 
