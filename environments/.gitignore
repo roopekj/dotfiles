@@ -1,0 +1,5 @@
+# Don't include environment specific configurations, only the template
+*
+!.gitignore
+!template.sh
+
