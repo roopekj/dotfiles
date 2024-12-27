@@ -19,6 +19,9 @@ git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 # Use tmux.conf from this repo
 echo "source-file $HOME/dotfiles/config/tmux/tmux.conf" >$HOME/.tmux.conf
 
+# This is used for screenshots
+mkdir -p $HOME/Pictures
+
 # Fonts
 mkdir -p $HOME/.local/share/fonts
 curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf

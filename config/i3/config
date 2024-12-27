@@ -134,11 +134,10 @@ bindsym $mod+Shift+comma exec systemctl suspend
 assign [class="firefox"] $ws1
 assign [class="Chromium"] $ws1
 assign [class="kitty"] $ws2
-assign [class="Code"] $ws3
-assign [class="discord"] $ws4
-assign [class="TelegramDesktop"] $ws4
-assign [class="Spotify"] $ws5
-assign [class="krusader"] $ws6
+assign [class="discord"] $ws3
+assign [class="TelegramDesktop"] $ws3
+assign [class="Spotify"] $ws4
+assign [class="krusader"] $ws5
 
 # Define these settings in a different file to make git diffs manageable between systems
 include workspaces.conf

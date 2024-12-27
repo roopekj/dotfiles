@@ -1,5 +1,5 @@
 #!/bin/sh
-source $HOME/dotfiles/environments/current.sh
+source $HOME/dotfiles/environments/environment.sh
 MONITORS=($MONITORS)
 RESOLUTIONS=($RESOLUTIONS)
 
