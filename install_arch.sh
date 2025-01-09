@@ -83,7 +83,28 @@ sudo cp $HOME/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
 sudo cp $HOME/dotfiles/config/xorg/* /etc/X11/xorg.conf.d/
 
 # Docker
-sudo pacman -S docker docker-compose
+sudo pacman -S docker docker-compose --noconfirm
 
-# Misc
-sudo pacman -S tig extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep npm eza ncdu yazi chromium gimp vlc telegram-desktop discord ristretto --noconfirm
+# Node is also required for some neovim plugins
+sudo pacman -S nodejs npm --noconfirm
+
+# Rust
+sudo pacman -S rustup --noconfirm
+
+# Go
+sudo pacman -S go --noconfirm
+
+# Media tools
+sudo pacman -S gimp vlc ristretto --noconfirm
+
+# Browsers
+sudo pacman -S firefox chromium --noconfirm
+
+# Messaging
+sudo pacman -S telegram-desktop discord --noconfirm
+
+# VC
+sudo pacman -S git tig --noconfirm
+
+# Miscellaneous
+sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi --noconfirm

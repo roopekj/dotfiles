@@ -19,4 +19,16 @@ vim.api.nvim_create_autocmd(
         end,
     }
 )
+vim.api.nvim_create_autocmd(
+    "BufWritePost",
+    {
+        pattern = "*.rs",
+        group = "AutoFormat",
+        callback = function()
+            vim.cmd("silent !rustfmt %")
+
+            vim.cmd("edit")
+        end,
+    }
+)
 

@@ -8,7 +8,7 @@ export VISUAL="nvim"
 export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
 
 # Add scripts and applications to path
-export PATH="$HOME/dotfiles/scripts:$HOME/dotfiles/applications:$PATH"
+export PATH="$HOME/dotfiles/scripts:$PATH"
 
 # Time savers
 alias v="nvim"
@@ -40,10 +40,25 @@ alias ll="eza --long --icons --git --all --sort modified"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="eza --tree --level=2 --long --icons --git --all"
 
-# Docker helpers
-# Run bash in image
+# Run bash in docker image
 alias dish="docker run --rm -it --entrypoint bash "
-# Run bash in container (aliases don't support parameters, hack around this with a function)
+
+# Run bash in docker image
+alias dish="docker run --rm -it --entrypoint bash "
+
+# The following are implemented as functions, as aliases don't support parameters.
+
+# Run bash in docker image after mounting a volume
+dishv () {
+    docker run -v "$2" --rm -it --entrypoint bash "$1"
+}
+
+# Run bash in docker container
 dcsh () {
     docker exec -it "$1" bash
+}
+
+# Change directory and immediately run `ll`
+cdl () {
+    cd $1; ll
 }
