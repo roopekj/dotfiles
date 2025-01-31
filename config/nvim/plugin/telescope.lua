@@ -1,6 +1,6 @@
 -- Patterns for removing noisy results when searching with either find_files, live_grep or grep_string
-local file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
-		"%.pdf", "%.mkv", "%.mp4", "%.zip", "%.png", "%.jpg", "%.pyc", "%.gz", "%.webp", "%.gif"}
+local file_ignore_patterns = {".git/", ".cache", "%.o$", "%.a$", "%.out$", "%.class$",
+		"%.pdf$", "%.mkv$", "%.mp4$", "%.zip$", "%.png$", "%.jpg$", "%.pyc$", "%.gz$", "%.webp$", "%.gif$"}
 
 -- [[ Configure Telescope ]]
 require('telescope').setup {

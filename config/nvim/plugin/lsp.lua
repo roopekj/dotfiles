@@ -24,7 +24,8 @@ local on_attach = function(_, bufnr)
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
-  nmap('gD', "<cmd>tab split | lua vim.lsp.buf.declaration()<CR>", '[G]oto [D]eclaration')
+  -- This one is a massive hack but it's the only way to have the LSP figure out the definition AND to follow it in a new tab.
+  vim.api.nvim_set_keymap('n', 'gD', ':lua require("telescope.builtin").lsp_definitions({ reuse_win = false })<CR>:tabnew<CR>', { noremap = true, silent = true })
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
   nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
   nmap('<leader>wl', function()
