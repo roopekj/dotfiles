@@ -83,7 +83,7 @@ sudo cp $HOME/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
 sudo cp $HOME/dotfiles/config/xorg/* /etc/X11/xorg.conf.d/
 
 # Docker
-sudo pacman -S docker docker-compose --noconfirm
+sudo pacman -S docker docker-compose docker-buildx --noconfirm
 
 # Node is also required for some neovim plugins
 sudo pacman -S nodejs npm --noconfirm
