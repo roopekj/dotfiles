@@ -186,7 +186,7 @@ require("lazy").setup({
 				"%.gz$",
 				"%.webp$",
 				"%.gif$",
-				"/node_modules/",
+				"node_modules/",
 			}
 			require("telescope").setup({
 				extensions = {
@@ -366,25 +366,21 @@ require("lazy").setup({
 			--  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+			-- For whatever reason setting up volar inside the later mason-lspconfig does not work. Let's do it the traditional way.
+			require("lspconfig").volar.setup({
+				init_options = {
+					vue = {
+						hybridMode = false,
+					},
+				},
+			})
+
 			local servers = {
 				clangd = {},
 				gopls = {},
 				pyright = {},
 				rust_analyzer = {},
-
-				ts_ls = {
-					init_options = {
-						plugins = {
-							{
-								languages = { "vue", "javascript", "typescript" },
-							},
-						},
-						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-					},
-				},
-
-				volar = {},
-
+				ts_ls = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -483,15 +479,6 @@ require("lazy").setup({
 					end
 					return "make install_jsregexp"
 				end)(),
-				dependencies = {
-					-- `friendly-snippets` contains a variety of premade snippets.
-					{
-						"rafamadriz/friendly-snippets",
-						config = function()
-							require("luasnip.loaders.from_vscode").lazy_load()
-						end,
-					},
-				},
 				opts = {},
 			},
 			"folke/lazydev.nvim",
@@ -598,7 +585,7 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
-		lazy = false,
+		lazy = true,
 		keys = {
 			{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
 		},
