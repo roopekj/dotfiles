@@ -85,8 +85,16 @@ sudo cp $HOME/dotfiles/config/xorg/* /etc/X11/xorg.conf.d/
 # Docker
 sudo pacman -S docker docker-compose docker-buildx --noconfirm
 
+# Flatpak for applications that force system updates too frequently
+sudo pacman -S flatpak
+
 # Node is also required for some neovim plugins
 sudo pacman -S nodejs npm --noconfirm
+
+# Set up global node packages
+mkdir -p ~/.npm-global/lib
+npm config set prefix '~/.npm-global'
+npm install -g @vue/typescript-plugin @vue/language-server ts-node typescript '@types/node'
 
 # Rust
 sudo pacman -S rustup --noconfirm
@@ -101,7 +109,8 @@ sudo pacman -S gimp vlc ristretto --noconfirm
 sudo pacman -S firefox chromium --noconfirm
 
 # Messaging
-sudo pacman -S telegram-desktop discord --noconfirm
+sudo pacman -S telegram-desktop --noconfirm
+flatpak install flathub com.discordapp.Discord
 
 # VC
 sudo pacman -S git tig --noconfirm

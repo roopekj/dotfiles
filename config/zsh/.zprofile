@@ -10,6 +10,12 @@ export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
 # Add scripts and applications to path
 export PATH="$HOME/dotfiles/scripts:$PATH"
 
+# Prepend global NPM packages
+export PATH=$HOME/.npm-global/bin:$PATH
+
+# Append flatpaks (for dmenu)
+export PATH=$PATH:/var/lib/flatpak/exports/bin/
+
 # Time savers
 alias v="nvim"
 alias ..="cd .."
@@ -39,9 +45,6 @@ alias ta="tmux a"
 alias ll="eza --long --icons --git --all --sort modified"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="eza --tree --level=2 --long --icons --git --all"
-
-# Run bash in docker image
-alias dish="docker run --rm -it --entrypoint bash "
 
 # Run bash in docker image
 alias dish="docker run --rm -it --entrypoint bash "

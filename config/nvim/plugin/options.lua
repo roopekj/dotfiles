@@ -24,7 +24,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 -- Number of lines shown when scrolling
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.isfname:append("@-@")
 
 -- Make line numbers default
@@ -34,10 +34,9 @@ vim.wo.number = true
 vim.opt.mouse = ""
 
 -- Sync clipboard between OS and Neovim
-vim.opt.clipboard = "unnamedplus"
-
--- Do not break overly long lines
--- vim.opt.breakindent = false
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
@@ -48,3 +47,22 @@ vim.wo.signcolumn = "yes"
 
 -- Set completeopt
 vim.opt.completeopt = "menuone,noselect"
+
+-- Don't show the mode, since it's already in the status line
+vim.o.showmode = false
+
+-- Decrease update time
+vim.o.updatetime = 250
+
+-- Decrease mapped sequence wait time
+vim.o.timeoutlen = 300
+
+-- Preview substitutions live, as you type!
+vim.o.inccommand = "split"
+
+-- Highlight the current line
+vim.o.cursorline = true
+
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+vim.o.confirm = true
