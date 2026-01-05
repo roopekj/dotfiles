@@ -2,17 +2,13 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- [[ Basic Keymaps ]]
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
--- [[ Basic Autocommands ]]
-
--- Highlight when yanking (copying) text
+-- Highlight when yanking text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -21,7 +17,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- [[ Install `lazy.nvim` plugin manager ]]
+-- Install `lazy.nvim` plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -35,7 +31,7 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
+-- Configure and install plugins
 require("lazy").setup({
 	"NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
 
@@ -76,14 +72,12 @@ require("lazy").setup({
 				end, { desc = "Jump to previous git [c]hange" })
 
 				-- Actions
-				-- visual mode
 				map("v", "<leader>hs", function()
 					gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 				end, { desc = "git [s]tage hunk" })
 				map("v", "<leader>hr", function()
 					gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 				end, { desc = "git [r]eset hunk" })
-				-- normal mode
 				map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "git [s]tage hunk" })
 				map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "git [r]eset hunk" })
 				map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "git [S]tage buffer" })
@@ -95,6 +89,7 @@ require("lazy").setup({
 				map("n", "<leader>hD", function()
 					gitsigns.diffthis("@")
 				end, { desc = "git [D]iff against last commit" })
+
 				-- Toggles
 				map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle git show [b]lame line" })
 				map("n", "<leader>tD", gitsigns.preview_hunk_inline, { desc = "[T]oggle git show [D]eleted" })
@@ -150,7 +145,7 @@ require("lazy").setup({
 		},
 	},
 
-	{ -- Fuzzy Finder (files, lsp, etc)
+	{ -- Fuzzy Finder
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
 		dependencies = {
@@ -167,12 +162,12 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 		config = function()
-			-- [[ Configure Telescope ]]
 			-- Patterns for removing noisy results when searching with either find_files, live_grep or grep_string
 			local file_ignore_patterns = {
 				".git/",
 				".cache",
 				"%.o$",
+				"%.so$",
 				"%.a$",
 				"%.out$",
 				"%.class$",
@@ -210,7 +205,7 @@ require("lazy").setup({
 				},
 			})
 
-			-- Enable Telescope extensions if they are installed
+			-- Telescope extensions
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
 		end,
@@ -237,7 +232,7 @@ require("lazy").setup({
 			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
-			{ "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim", opts = {} }, -- Add notifications to the bottom right
 			"saghen/blink.cmp",
 		},
 
@@ -264,7 +259,7 @@ require("lazy").setup({
 						"[W]orkspace [S]ymbols"
 					)
 
-					-- This one is a massive hack but it's the only way to have the LSP figure out the definition AND to follow it in a new tab.
+					-- This one is a massive hack but it's the only way to have the LSP figure out the definition AND to follow it into a new tab.
 					vim.api.nvim_set_keymap(
 						"n",
 						"gD",
@@ -272,30 +267,9 @@ require("lazy").setup({
 						{ noremap = true, silent = true }
 					)
 
-					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-					---@param client vim.lsp.Client
-					---@param method vim.lsp.protocol.Method
-					---@param bufnr? integer some lsp support methods only in specific files
-					---@return boolean
-					local function client_supports_method(client, method, bufnr)
-						if vim.fn.has("nvim-0.11") == 1 then
-							return client:supports_method(method, bufnr)
-						else
-							return client.supports_method(method, { bufnr = bufnr })
-						end
-					end
-
-					-- The following two autocommands are used to highlight references of the
-					-- word under your cursor when your cursor rests there for a little while.
+					-- Highlight references of the word under your caret when it stays put for a little while.
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-					if
-						client
-						and client_supports_method(
-							client,
-							vim.lsp.protocol.Methods.textDocument_documentHighlight,
-							event.buf
-						)
-					then
+					if client then
 						local highlight_augroup =
 							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -318,21 +292,10 @@ require("lazy").setup({
 							end,
 						})
 					end
-
-					-- The following code creates a keymap to toggle inlay hints in your
-					-- code, if the language server you are using supports them
-					if
-						client
-						and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
-					then
-						map("<leader>th", function()
-							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-						end, "[T]oggle Inlay [H]ints")
-					end
 				end,
 			})
 
-			-- Diagnostic Config
+			-- Diagnostics
 			vim.diagnostic.config({
 				severity_sort = true,
 				float = { border = "rounded", source = "if_many" },
@@ -366,48 +329,26 @@ require("lazy").setup({
 			--  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			-- For whatever reason setting up volar inside the later mason-lspconfig does not work. Let's do it the traditional way.
-			require("lspconfig").volar.setup({
-				init_options = {
-					vue = {
-						hybridMode = false,
-					},
-				},
-			})
-
-			local servers = {
-				clangd = {},
-				gopls = {},
-				pyright = {},
-				rust_analyzer = {},
-				ts_ls = {},
-				jsonls = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				},
+			local ensure_installed = {
+				"clangd",
+				"css-lsp",
+				"gopls",
+				"html-lsp",
+				"json-lsp",
+				"lua-language-server",
+				"pyright",
+				"ruff",
+				"rust-analyzer",
+				"stylua",
+				"tailwindcss-language-server",
+				"ts_ls",
+				"vue_ls",
+				"shfmt",
+				"clang-format",
+				"shellcheck",
+				"isort",
 			}
 
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua",
-				"pyright",
-				"shfmt",
-				"shellcheck",
-				"black",
-				"isort",
-				"rust-analyzer",
-				"html-lsp",
-				"css-lsp",
-				"ruff",
-				"vue-language-server",
-				"typescript-language-server",
-			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason-lspconfig").setup({
@@ -421,6 +362,29 @@ require("lazy").setup({
 					end,
 				},
 			})
+
+			local mason_registry = require("mason-registry")
+			local vue_language_server_path = vim.fn.expand("$MASON/packages")
+				.. "/vue-language-server"
+				.. "/node_modules/@vue/language-server"
+
+			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+			local vue_plugin = {
+				name = "@vue/typescript-plugin",
+				location = vue_language_server_path,
+				languages = { "vue" },
+				configNamespace = "typescript",
+			}
+			local ts_ls_config = {
+				init_options = {
+					plugins = {
+						vue_plugin,
+					},
+				},
+				filetypes = tsserver_filetypes,
+			}
+			vim.lsp.config("ts_ls", ts_ls_config)
+			vim.lsp.enable({ "ts_ls", "vue_ls" })
 		end,
 	},
 
@@ -549,6 +513,7 @@ require("lazy").setup({
 			end
 		end,
 	},
+
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -578,7 +543,8 @@ require("lazy").setup({
 			indent = { enable = true, disable = { "ruby" } },
 		},
 	},
-	{ -- Navigate filesystem
+
+	{ -- Directory file tree viewer
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		dependencies = {
@@ -600,11 +566,13 @@ require("lazy").setup({
 			},
 		},
 	},
+
 	{ -- When inserting a character that occurs in pairs, like a bracket, this adds the other pair automatically
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {},
 	},
+
 	{ -- Add indentation guides even on blank lines
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",

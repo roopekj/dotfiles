@@ -1,6 +1,6 @@
 # dotfiles
 
-**OS**: arch/ubuntu  
+**OS**: arch/debian  
 **Editor**: nvim  
 **Shell**: zsh + oh-my-zsh  
 **Terminal**: kitty  

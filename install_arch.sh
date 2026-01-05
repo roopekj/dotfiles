@@ -20,7 +20,7 @@ git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 echo "source-file $HOME/dotfiles/config/tmux/tmux.conf" >$HOME/.tmux.conf
 
 # This is used for screenshots
-mkdir -p $HOME/Pictures
+mkdir -p $HOME/Pictures/screenshots
 
 # Fonts
 mkdir -p $HOME/.local/share/fonts
@@ -116,4 +116,4 @@ flatpak install flathub com.discordapp.Discord
 sudo pacman -S git tig --noconfirm
 
 # Miscellaneous
-sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi --noconfirm
+sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi imagemagick perf --noconfirm

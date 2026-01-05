@@ -172,9 +172,9 @@ bindsym $mod+shift+p exec --no-startup-id "sh $HOME/dotfiles/scripts/switch_moni
 
 # PrtSc = fullscreen screenshot, Ctrl+PrtSc = active window screenshot, Shift+PrtSc = selection screenshot
 # Screenshots (filesystem)
-bindsym Print exec --no-startup-id maim "$HOME/Pictures/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
-bindsym Ctrl+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
-bindsym Shift+Print exec --no-startup-id maim --select "$HOME/Pictures/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym Print exec --no-startup-id maim "$HOME/Pictures/screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym Ctrl+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym Shift+Print exec --no-startup-id maim --select "$HOME/Pictures/screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
 
 # Adding super saves screenshots to clipboard
 # Screenshots (clipboard)

@@ -46,6 +46,15 @@ alias ll="eza --long --icons --git --all --sort modified"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias lta="eza --tree --level=2 --long --icons --git --all"
 
+# Remove metadata of a file
+alias rmeta="exiftool -all= -overwrite_original "
+
+# Check error logs of systemd services since last boot
+alias clogs="journalctl -p 3 -xb"
+
+# Remove all unused packages
+alias pacgc="pacman -Qtdq | sudo pacman -Rns -"
+
 # Run bash in docker image
 alias dish="docker run --rm -it --entrypoint bash "
 
