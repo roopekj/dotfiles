@@ -275,7 +275,22 @@ require("lazy").setup({
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 							buffer = event.buf,
 							group = highlight_augroup,
-							callback = vim.lsp.buf.document_highlight,
+							callback = function()
+								-- Some extensions have an LSP that does not support highlighting, so we have to exclude them here.
+								local excluded_filetypes = {
+									markdown = true,
+									help = true,
+									text = true,
+									json = true,
+								}
+
+								local ft = vim.bo.filetype
+								if excluded_filetypes[ft] then
+									return
+								end
+
+								vim.lsp.buf.document_highlight()
+							end,
 						})
 
 						vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
@@ -356,7 +371,7 @@ require("lazy").setup({
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
-						local server = servers[server_name] or {}
+						local server = {}
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,
@@ -408,7 +423,7 @@ require("lazy").setup({
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true }
+				local disable_filetypes = { c = true }
 				if disable_filetypes[vim.bo[bufnr].filetype] then
 					return nil
 				else
