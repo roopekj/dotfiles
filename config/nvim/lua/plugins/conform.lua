@@ -33,7 +33,7 @@ return {
 			lua = { "stylua" },
 			rust = { "rustfmt" },
 			dockerfile = { "docker" },
-			python = { "isort", "autoflake", "ruff" },
+			python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
 			c = { "clang_format" },
 			cpp = { "clang_format" },
 			sh = { "shfmt" },

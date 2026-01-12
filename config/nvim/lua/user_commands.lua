@@ -1,4 +1,5 @@
--- Telescope live_grep in git root
+-- User commands to be published for custom keymaps
+
 -- Function to find the git root directory based on the current buffer's path
 local function find_git_root()
 	-- Use the current buffer's path as the starting point for the git search

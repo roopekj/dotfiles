@@ -33,7 +33,6 @@ require("lazyinit")
 -- Additional configurations related to minor functionalities
 require("options")
 require("keymaps")
-require("autoformat")
 require("user_commands")
 require("theme")
 
