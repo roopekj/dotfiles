@@ -55,6 +55,27 @@ map("<leader>tc", ":tabclose<cr>", "Close current tab")
 map("<C-l>", ":tabnext<cr>", "Go one tab forward")
 map("<C-h>", ":tabprev<cr>", "Go one tab backward")
 
+-- By default, closing the current tab opens up the next tab, ie. the one on the right.
+-- This is especially awkward when you're quickly checking the definition or usage of a variable,
+-- and then want to go back. Now you have to also switch tabs after closing the one that was opened.
+-- This overrides that behavior, always going to the tab that is one slot to the left.
+vim.api.nvim_create_user_command("QGotoLeft", function()
+	local total = vim.fn.tabpagenr("$")
+	if total == 1 then
+		vim.cmd("exit")
+	end
+
+	local current = vim.fn.tabpagenr()
+	local target = 1
+	if current > 1 then
+		target = current - 1
+	end
+
+	vim.cmd("tabclose")
+	vim.cmd("tabnext " .. target)
+end, {})
+vim.cmd([[cabbrev q QGotoLeft]])
+
 -- Diagnostic keymaps
 map("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic message")
 map("]d", vim.diagnostic.goto_next, "Go to next diagnostic message")
