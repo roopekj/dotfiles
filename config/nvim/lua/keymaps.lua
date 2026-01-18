@@ -19,31 +19,29 @@ map("n", "nzzzv")
 map("N", "Nzzzv")
 
 -- Disable arrow keys in all modes
-map("<Left>", "")
-map("<Down>", "")
-map("<Up>", "")
-map("<Right>", "")
+vim.keymap.set("n", "<Left>", "")
+vim.keymap.set("n", "<Down>", "")
+vim.keymap.set("n", "<Up>", "")
+vim.keymap.set("n", "<Right>", "")
 
-map("<Left>", "", "i")
-map("<Down>", "", "i")
-map("<Up>", "", "i")
-map("<Right>", "", "i")
+vim.keymap.set("i", "<Left>", "")
+vim.keymap.set("i", "<Down>", "")
+vim.keymap.set("i", "<Up>", "")
+vim.keymap.set("i", "<Right>", "")
 
-map("<Left>", "", "c")
-map("<Down>", "", "c")
-map("<Up>", "", "c")
-map("<Right>", "", "c")
+vim.keymap.set("c", "<Left>", "")
+vim.keymap.set("c", "<Down>", "")
+vim.keymap.set("c", "<Up>", "")
+vim.keymap.set("c", "<Right>", "")
 
-map("<Left>", "", "v")
-map("<Down>", "", "v")
-map("<Up>", "", "v")
-map("<Right>", "", "v")
+vim.keymap.set("v", "<Left>", "")
+vim.keymap.set("v", "<Down>", "")
+vim.keymap.set("v", "<Up>", "")
+vim.keymap.set("v", "<Right>", "")
 
--- <leader>p doesn't overwrite copy buffer when pasting over existing text
-map("<leader>p", [["_dp"]], "x")
-map("<leader>d", [["_dd"]], "x")
-map("<leader>c", [["_dc"]], "x")
-map("<leader>x", [["_dx"]], "x")
+-- Operations that otherwise overwrite the copy buffer omit doing so when prefixed with the <leader>
+map("<leader>p", [["_dp"]], "Paste without overwriting copy buffer", "x")
+map("<leader>d", [["_dd"]], "Delete without overwriting copy buffer", "x")
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
