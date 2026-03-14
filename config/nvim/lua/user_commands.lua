@@ -1,4 +1,4 @@
--- User commands to be published for custom keymaps
+-- Custom commands to be published for custom keymaps
 
 -- Function to find the git root directory based on the current buffer's path
 local function find_git_root()
@@ -24,13 +24,19 @@ local function find_git_root()
 end
 
 -- Custom live_grep function to search in git root
-local function live_grep_git_root()
+vim.api.nvim_create_user_command("LiveGrepGitRoot", function()
 	local git_root = find_git_root()
 	if git_root then
 		require("telescope.builtin").live_grep({
 			search_dirs = { git_root },
 		})
 	end
-end
+end, {})
 
-vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
+-- Restart all active LSPs and reload the current buffer. Used to force a refetch of dependencies when new packages are installed.
+vim.api.nvim_create_user_command("LspRestartAll", function()
+	for _, client in pairs(vim.lsp.get_clients()) do
+		vim.lsp.stop_client(client.id)
+	end
+	vim.cmd("edit")
+end, {})

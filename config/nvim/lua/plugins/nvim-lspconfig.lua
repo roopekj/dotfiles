@@ -39,12 +39,13 @@ return {
 						buffer = event.buf,
 						group = highlight_augroup,
 						callback = function()
-							-- Some extensions have an LSP that does not support highlighting, so we have to exclude them here.
+							-- Some file extensions have an LSP that does not support highlighting, so we have to exclude them here.
 							local excluded_filetypes = {
 								markdown = true,
 								help = true,
 								text = true,
 								json = true,
+								jsonc = true,
 							}
 
 							local ft = vim.bo.filetype

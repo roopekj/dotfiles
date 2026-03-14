@@ -83,6 +83,9 @@ map("<leader>q", vim.diagnostic.setloclist, "Open diagnostics list")
 -- Clear search highlights when pressing Esc
 map("<Esc>", ":noh<Cr><Esc>")
 
+-- Restart LSPs with q in normal mode. This overwrites a macro keymap.
+map("q", ":LspRestartAll<cr>")
+
 -- Global keymaps related to `telescope.nvim`
 local telescope = require("telescope.builtin")
 map("<leader>?", telescope.oldfiles, "[?] Find recently opened files")

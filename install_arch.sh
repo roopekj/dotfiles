@@ -1,6 +1,6 @@
 if [ $(whoami) == "root" ]; then
-	echo "Run this script as your user account, not with sudo or as root"
-	exit
+    echo "Run this script as your user account, not with sudo or as root"
+    exit
 fi
 
 # Fail on first error
@@ -116,4 +116,4 @@ flatpak install flathub com.discordapp.Discord
 sudo pacman -S git tig --noconfirm
 
 # Miscellaneous
-sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi imagemagick perf --noconfirm
+sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi imagemagick perf pavucontrol --noconfirm

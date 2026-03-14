@@ -58,6 +58,9 @@ alias pacgc="pacman -Qtdq | sudo pacman -Rns -"
 # Run bash in docker image
 alias dish="docker run --rm -it --entrypoint bash "
 
+# Get list of installed pacman packages ordered by size on disk
+alias pacsize="pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less"
+
 # The following are implemented as functions, as aliases don't support parameters.
 
 # Run bash in docker image after mounting a volume

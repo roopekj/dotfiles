@@ -42,6 +42,13 @@ return {
 			typescript = { "prettier" },
 			javascript = { "prettier" },
 			vue = { "prettier" },
+
+			-- These make strong assumptions about the types of projects you're working on.
+			-- Modify as you see fit.
+			yaml = { "docker" },
+			json = { "prettier" },
+			jsonc = { "prettier" },
+			toml = { "pyproject-fmt" },
 		},
 	},
 }
