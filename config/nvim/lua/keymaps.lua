@@ -41,6 +41,7 @@ vim.keymap.set("v", "<Right>", "")
 
 -- Operations that otherwise overwrite the copy buffer omit doing so when prefixed with the <leader>
 map("<leader>p", [["_dp"]], "Paste without overwriting copy buffer", "x")
+map("<leader>c", [["_dc"]], "Change without overwriting copy buffer", "x")
 map("<leader>d", [["_dd"]], "Delete without overwriting copy buffer", "x")
 
 -- Remap for dealing with word wrap
