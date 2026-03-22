@@ -1,0 +1,22 @@
+#!/bin/sh
+if [ $# -ne 1 ]; then
+    echo "You have not specified a environment to use." >&2
+    exit 1
+fi
+
+NEW_ENVIRONMENT="$HOME/dotfiles/environments/$1.environment"
+if [ -f "$NEW_ENVIRONMENT" ]; then
+    source "$NEW_ENVIRONMENT"
+else
+    echo "Environment '$NEW_ENVIRONMENT' does not exist." >&2
+    exit 1
+fi
+
+source $HOME/dotfiles/environments/$1.environment
+
+if [ ${#ENABLED_MONITORS[@]} -eq 0 ]; then
+    echo "Make sure ENABLED_MONITORS is not empty in the new environment, otherwise this is not a good idea..." >&2
+    exit 1
+fi
+
+ln -sf ~/dotfiles/environments/$1.environment ~/dotfiles/environments/active.environment

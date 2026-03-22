@@ -32,23 +32,31 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			rust = { "rustfmt" },
-			dockerfile = { "docker" },
 			python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
 			c = { "clang_format" },
 			cpp = { "clang_format" },
-			sh = { "shfmt" },
+			sh = { "shellcheck" },
 			go = { "gopls" },
-			sql = { "pgformatter" },
+			sql = { "pg_format" },
 			typescript = { "prettier" },
 			javascript = { "prettier" },
 			vue = { "prettier" },
 
 			-- These make strong assumptions about the types of projects you're working on.
 			-- Modify as you see fit.
-			yaml = { "docker" },
 			json = { "prettier" },
 			jsonc = { "prettier" },
 			toml = { "pyproject-fmt" },
+		},
+		formatters = {
+			-- TODO: DCLint doesn't support stdin/stdout formatting as it's mainly a linter.
+			-- As such, it only works with files on disk which leads to the "The file has been changed since reading it" error during save.
+			-- This would need to be fixed on their end.
+			-- dclint = {
+			-- 	command = "dclint",
+			-- 	args = { "$FILENAME", "--fix" },
+			-- 	stdin = true,
+			-- },
 		},
 	},
 }
