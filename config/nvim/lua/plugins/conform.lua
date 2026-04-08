@@ -38,9 +38,9 @@ return {
 			sh = { "shellcheck" },
 			go = { "gopls" },
 			sql = { "pg_format" },
-			typescript = { "prettier" },
-			javascript = { "prettier" },
-			vue = { "prettier" },
+			typescript = { "eslint", "prettier" },
+			javascript = { "eslint", "prettier" },
+			vue = { "eslint", "prettier" },
 
 			-- These make strong assumptions about the types of projects you're working on.
 			-- Modify as you see fit.

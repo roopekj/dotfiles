@@ -9,6 +9,8 @@ return {
 			"html-lsp",
 			"json-lsp",
 			"lua-language-server",
+			"hadolint",
+			"eslint",
 			"pyright",
 			"pyproject-fmt",
 			"docker-language-server",
