@@ -39,3 +39,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# uv uses this to modify PATH
+. "$HOME/.local/bin/env"

@@ -96,6 +96,9 @@ mkdir -p ~/.npm-global/lib
 npm config set prefix "$HOME"/.npm-global
 npm install -g @vue/typescript-plugin @vue/language-server ts-node typescript '@types/node' dclint
 
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Rust
 sudo pacman -S rustup --noconfirm
 

@@ -23,14 +23,6 @@ return {
 				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
-				-- This one is a massive hack but it's the only way to have the LSP figure out the definition AND to follow it into a new tab.
-				vim.api.nvim_set_keymap(
-					"n",
-					"gD",
-					':lua require("telescope.builtin").lsp_definitions({ reuse_win = false })<CR>:tabnew<CR>',
-					{ noremap = true, silent = true }
-				)
-
 				-- Highlight references of the word under your caret when it stays put for a little while.
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client then
