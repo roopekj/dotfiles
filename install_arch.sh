@@ -65,7 +65,7 @@ rm -rf "$HOME"/miniconda3/miniconda.sh
 "$HOME"/miniconda3/bin/conda init zsh
 
 # Sound
-sudo pacman -S alsa-utils --noconfirm
+sudo pacman -S alsa-utils pavucontrol --noconfirm
 amixer sset Master unmute
 
 # Laptop screen brightness
@@ -85,18 +85,18 @@ sudo cp "$HOME"/dotfiles/config/xorg/* /etc/X11/xorg.conf.d/
 # Docker
 sudo pacman -S docker docker-compose docker-buildx --noconfirm
 
-# Flatpak for applications that force system updates too frequently
+# Flatpak for applications that would otherwise force system upgrades too frequently
 sudo pacman -S flatpak
 
-# Node is also required for some neovim plugins
+# Node (also required for some neovim plugins)
 sudo pacman -S nodejs npm --noconfirm
 
-# Set up global node packages
+# Global node packages
 mkdir -p ~/.npm-global/lib
 npm config set prefix "$HOME"/.npm-global
 npm install -g @vue/typescript-plugin @vue/language-server ts-node typescript '@types/node' dclint
 
-# uv
+# Uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Rust
@@ -106,7 +106,7 @@ sudo pacman -S rustup --noconfirm
 sudo pacman -S go --noconfirm
 
 # Media tools
-sudo pacman -S gimp vlc ristretto --noconfirm
+sudo pacman -S gimp vlc ristretto imagemagick --noconfirm
 
 # Browsers
 sudo pacman -S firefox chromium --noconfirm
@@ -115,8 +115,8 @@ sudo pacman -S firefox chromium --noconfirm
 sudo pacman -S telegram-desktop --noconfirm
 flatpak install flathub com.discordapp.Discord
 
-# VC
+# Version control
 sudo pacman -S git tig --noconfirm
 
 # Miscellaneous
-sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi imagemagick perf pavucontrol --noconfirm
+sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi perf nerd-fonts libreoffice-still --noconfirm
