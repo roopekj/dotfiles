@@ -36,6 +36,7 @@ return {
 			"%.webp$",
 			"%.gif$",
 			"node_modules/",
+			".venv/",
 		}
 		require("telescope").setup({
 			extensions = {

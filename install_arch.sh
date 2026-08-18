@@ -65,7 +65,7 @@ rm -rf "$HOME"/miniconda3/miniconda.sh
 "$HOME"/miniconda3/bin/conda init zsh
 
 # Sound
-sudo pacman -S alsa-utils pavucontrol --noconfirm
+sudo pacman -S alsa-utils pavucontrol libogg --noconfirm
 amixer sset Master unmute
 
 # Laptop screen brightness
@@ -106,7 +106,7 @@ sudo pacman -S rustup --noconfirm
 sudo pacman -S go --noconfirm
 
 # Media tools
-sudo pacman -S gimp vlc ristretto imagemagick --noconfirm
+sudo pacman -S gimp vlc vlc-plugins-all ristretto imagemagick yt-dlp --noconfirm
 
 # Browsers
 sudo pacman -S firefox chromium --noconfirm
@@ -119,4 +119,4 @@ flatpak install flathub com.discordapp.Discord
 sudo pacman -S git tig --noconfirm
 
 # Miscellaneous
-sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi perf nerd-fonts libreoffice-still --noconfirm
+sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi perf nerd-fonts libreoffice-still iperf3 --noconfirm
