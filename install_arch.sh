@@ -9,6 +9,9 @@ set -e
 # Upgrade packages
 sudo pacman -Syu
 
+# Some packages that are foundational to the configuration
+sudo pacman -S gcc git wget unzip i3-wm neovim tmux kitty feh polkit --noconfirm
+
 # Add repo's bash config to system .bashrc if not already present
 grep -qxF "source $HOME/dotfiles/config/bash/.bashrc" "$HOME"/.bashrc || echo "source $HOME/dotfiles/config/bash/.bashrc" >>"$HOME"/.bashrc
 
@@ -21,19 +24,6 @@ echo "source-file $HOME/dotfiles/config/tmux/tmux.conf" >"$HOME"/.tmux.conf
 
 # This is used for screenshots
 mkdir -p "$HOME"/Pictures/screenshots
-
-# Fonts
-mkdir -p "$HOME"/.local/share/fonts
-curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
-mv DroidSansMNerdFont-Regular.otf "$HOME"/.local/share/fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
-sudo pacman -S unzip --noconfirm
-unzip -o JetBrainsMono.zip -d "$HOME"/.local/share/fonts
-rm JetBrainsMono.zip
-sudo pacman -S breeze-icons --noconfirm # This is for krusader
-
-# Packages required for next steps
-sudo pacman -S i3-wm neovim tmux code kitty krusader feh polkit --noconfirm
 
 # ZSH
 sudo pacman -S zsh --noconfirm
@@ -83,10 +73,10 @@ sudo cp "$HOME"/dotfiles/scripts/suspend.rules /etc/polkit-1/rules.d
 sudo cp "$HOME"/dotfiles/config/xorg/* /etc/X11/xorg.conf.d/
 
 # Docker
-sudo pacman -S docker docker-compose docker-buildx --noconfirm
+sudo pacman -S docker docker-compose docker-buildx nvidia-container-toolkit --noconfirm
 
 # Flatpak for applications that would otherwise force system upgrades too frequently
-sudo pacman -S flatpak
+sudo pacman -S flatpak --noconfirm
 
 # Node (also required for some neovim plugins)
 sudo pacman -S nodejs npm --noconfirm
@@ -116,7 +106,10 @@ sudo pacman -S telegram-desktop --noconfirm
 flatpak install flathub com.discordapp.Discord
 
 # Version control
-sudo pacman -S git tig --noconfirm
+sudo pacman -S tig git-lfs --noconfirm
+
+# Fonts
+sudo pacman -S breeze-icons nerd-fonts --noconfirm
 
 # Miscellaneous
-sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi perf nerd-fonts libreoffice-still iperf3 --noconfirm
+sudo pacman -S extra/xorg-xrandr man-pages man-db network-manager-applet sshuttle maim xdotool ripgrep eza ncdu yazi perf libreoffice-still iperf3 parallel jq krusader --noconfirm

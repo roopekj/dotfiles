@@ -58,6 +58,9 @@ alias pacgc="pacman -Qtdq | sudo pacman -Rns -"
 # Run bash in docker image
 alias dish="docker run --rm -it --entrypoint bash "
 
+# Git commands without invoking LFS
+alias gits="GIT_LFS_SKIP_SMUDGE=1 git"
+
 # Get list of installed pacman packages ordered by size on disk
 alias pacsize="pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less"
 
